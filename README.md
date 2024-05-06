@@ -7,7 +7,7 @@ manuscript:
 > to ecosystem function  
 > Joe Wan*, Po-Ju Ke*, Iris Hordijk, Lalasia Bialic-Murphy, and Thomas W. 
 > Crowther  
-> doi: https://doi.org/10.1101/XXXX.XX.XX.XXXXXX
+> Preprint (bioRxiv). doi: https://doi.org/10.1101/2024.05.05.591902
 
 
 ## File Structure
