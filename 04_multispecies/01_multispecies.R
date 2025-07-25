@@ -2,7 +2,7 @@
 # 04_multispecies/01_multispecies.R
 # ==================================
 # Author: Joe Wan
-# Purpose: Generate primary multispecies model figures (Figures 06a-c and related outputs).
+# Generate primary multispecies model figures (Figures 06a-c, S10).
 
 library(deSolve)
 

@@ -2,9 +2,9 @@
 # 04_multispecies/02_supplemental_analyses.R
 # ============================================
 # Author: Joe Wan
-# Purpose: Generate supplemental figures for multispecies model analyses
-# (alternate productivity scaling, histograms, pairwise plots), excluding
-# time series and invasion analysis.
+# Generate supplemental figures for multispecies model analyses (Figures S08, S11).
+
+
 
 ##### 0. Helper functions, etc. #####
 # Load utility functions and helpers
