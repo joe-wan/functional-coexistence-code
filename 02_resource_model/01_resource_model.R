@@ -2,7 +2,7 @@
 # 02_resource_model/01_resource_model.R
 # =======================================
 # Author: Joe Wan
-# Generates the theoretical result figure for resource model (Figure 4b).
+# Generates the theoretical result figures for resource model (Figure 7ab).
 
 # Data manipulation libraries
 library(dplyr)
@@ -171,7 +171,7 @@ if (show.plots) print(fct.strip)
 
 # Save individual plots
 # ---------------------
-ggsave(paste0(outpath, '04_b_resource_effect.pdf'), resource.effect + th, 
+ggsave(paste0(outpath, '07_a_resource_effect.pdf'), resource.effect + th, 
        device=cairo_pdf, width=out.width*4/3, height=out.height*1)
-ggsave(paste0(outpath, '04_b_fct_strip.pdf'), fct.strip + th, 
+ggsave(paste0(outpath, '07_b_fct_strip.pdf'), fct.strip + th, 
        device=cairo_pdf, width=out.width*4/3, height=out.height*2/3)

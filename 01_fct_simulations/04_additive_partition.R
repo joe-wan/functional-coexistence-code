@@ -2,7 +2,7 @@
 # 01_fct_simulations/04_additive_partition.R
 # ==========================================
 # Author: Joe Wan
-# Generates figures relating FCT to the additive partition (Figures 3a-c).
+# Generates figures relating FCT to the additive partition (Figures 4a-c).
 
 # Data manipulation
 library(dplyr)
@@ -199,12 +199,12 @@ if (show.plots) print(fu.biomass)
 
 ##### 3. Export individual plots #####
 ti <- theme(legend.position="none")
-ggsave(paste0(outpath, '03_a_additive_partition_stabilization.pdf'), 
+ggsave(paste0(outpath, '04_a_additive_partition_stabilization.pdf'), 
     stab.biomass + ti,
     device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, '03_b_additive_partition_equalization.pdf'), 
+ggsave(paste0(outpath, '04_b_additive_partition_equalization.pdf'), 
     eq.biomass + ti,
     device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, '03_c_additive_partition_functional_equalization.pdf'), 
+ggsave(paste0(outpath, '04_c_additive_partition_functional_equalization.pdf'), 
     fu.biomass + ti,
     device=cairo_pdf, width=out.width, height=out.height)

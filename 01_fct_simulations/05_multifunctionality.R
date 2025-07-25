@@ -2,7 +2,7 @@
 # 01_fct_simulations/05_multifunctionality.R
 # ==========================================
 # Author: Joe Wan
-# Generates figures illustrating multifunctional overyielding (Figure 6a-b).
+# Generates figures illustrating multifunctional overyielding (Figure 9a-b).
 
 # Data manipulation
 library(dplyr)
@@ -159,9 +159,9 @@ if (show.plots) print(eq.inset)
 
 
 ##### 3. Export plots #####
-ggsave(paste0(outpath, '06_a_fct_space_multi_wide.pdf'), multi.plot + th, 
+ggsave(paste0(outpath, '09_a_fct_space_multi_wide.pdf'), multi.plot + th, 
        device=cairo_pdf, width=out.width*1.5, height=out.height*1.5)
-ggsave(paste0(outpath, '06_b_equalization_multi_biomass.pdf'), eq.biomass + th, 
+ggsave(paste0(outpath, '09_b_equalization_multi_biomass.pdf'), eq.biomass + th, 
        device=cairo_pdf, width=out.width*0.75, height=out.height*1.5)
-ggsave(paste0(outpath, '06_b_equalization_multi_inset.pdf'), eq.inset + th, 
+ggsave(paste0(outpath, '09_b_equalization_multi_inset.pdf'), eq.inset + th, 
        device=cairo_pdf, width=out.width/2, height=out.height/2)

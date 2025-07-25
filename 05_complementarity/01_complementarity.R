@@ -2,7 +2,7 @@
 # 05_complementarity/01_complementarity.R
 # =======================================
 # Author: Joe Wan
-# Generates plot comparing niche and fitness metrics (Figura S5.1a-b).
+# Generates plot comparing niche and fitness metrics (Figura S3).
 
 # Data manipulation
 library(tidyr)
@@ -254,15 +254,15 @@ geo.b <- plot.geo(filter(paths.com, panel=='b'), factor=3.1)
 
 # Save plots
 # ----------
-ggsave(paste0(outpath, 'S5_01_a_complementarity_tigr_geo.pdf'),  geo.a,
+ggsave(paste0(outpath, 'S03_a_complementarity_tigr_geo.pdf'),  geo.a,
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, 'S5_01_a_complementarity_tigr_ari.pdf'),  ari.a,
+ggsave(paste0(outpath, 'S03_a_complementarity_tigr_ari.pdf'),  ari.a,
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, 'S5_01_a_complementarity_tigr_com.pdf'),  com.a,
+ggsave(paste0(outpath, 'S03_a_complementarity_tigr_com.pdf'),  com.a,
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, 'S5_01_b_complementarity_tigr_geo.pdf'),  geo.b,
+ggsave(paste0(outpath, 'S03_b_complementarity_tigr_geo.pdf'),  geo.b,
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, 'S5_01_b_complementarity_tigr_ari.pdf'),  ari.b,
+ggsave(paste0(outpath, 'S03_b_complementarity_tigr_ari.pdf'),  ari.b,
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, 'S5_01_b_complementarity_tigr_com.pdf'),  com.b,
+ggsave(paste0(outpath, 'S03_b_complementarity_tigr_com.pdf'),  com.b,
   device=cairo_pdf, width=out.width, height=out.height)

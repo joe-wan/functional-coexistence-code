@@ -2,7 +2,7 @@
 # 04_multispecies/01_multispecies.R
 # ==================================
 # Author: Joe Wan
-# Generates all figures for the multispecies model (Figures 7a-c, S9.1-5).
+# Generates all figures for the multispecies model (Figures 5b, 6a-c, S4, S8-S12).
 
 
 # Data manipulation libraries
@@ -144,7 +144,7 @@ get.example.sp.df <- function(df) {
 }
 
 
-##### 2b. Simulate scenarios (Figure 7) #####
+##### 2b. Simulate scenarios (Figure 6) #####
 # Panel (a): Stabilizing 
 # ----------------------
 # Stabilizing i.e. decreasing niche overlap corresponds to increasing rho. 
@@ -357,7 +357,7 @@ plot.sads <- function(examples.sp, color="black", alpha=1,
 }
 
 
-##### 3b. Plot the scenarios (Figure 7) #####
+##### 3b. Plot the scenarios (Figure 6) #####
 # Panel (a): Stabilizing
 # ----------------------
 # Main plot
@@ -420,19 +420,19 @@ sad.extra <- scale_x_continuous(breaks=seq(5,15,by=5))
 
 # All the panels have the same height, so we can keep them in proportion
 # by exporting with the same dimensions
-ggsave(paste0(outpath, '07_a_stabilizing.pdf'), 
+ggsave(paste0(outpath, '06_a_stabilizing.pdf'), 
     stabilizing.plot + th,
     device=cairo_pdf, width=main.width, height=main.height)
-ggsave(paste0(outpath, '07_a_stabilizing_sads.pdf'), 
+ggsave(paste0(outpath, '06_a_stabilizing_sads.pdf'), 
     stabilizing.sads + sad.extra + th,
     device=cairo_pdf, width=sads.width, height=sads.height)
-ggsave(paste0(outpath, '07_b_equalizing.pdf'), 
+ggsave(paste0(outpath, '06_b_equalizing.pdf'), 
     equalizing.plot + th,
     device=cairo_pdf, width=main.width, height=main.height)
-ggsave(paste0(outpath, '07_b_equalizing_sads.pdf'), 
+ggsave(paste0(outpath, '06_b_equalizing_sads.pdf'), 
     equalizing.sads + sad.extra + th,
     device=cairo_pdf, width=sads.width, height=sads.height)
-ggsave(paste0(outpath, '07_c_prodeq.pdf'), 
+ggsave(paste0(outpath, '06_c_prodeq.pdf'), 
     prodeq.plot + th,
     device=cairo_pdf, width=main.width, height=main.height)
 ggsave(paste0(outpath, '07_c_prodeq_sads.pdf'), 
@@ -441,7 +441,7 @@ ggsave(paste0(outpath, '07_c_prodeq_sads.pdf'),
 
 
 ##### 4. Plots for appendix #####
-# Export a zoomed-in version of the stabilizing plot (Figure S9.2)
+# Export a zoomed-in version of the stabilizing plot (Figure S9)
 # ----------------------------------------------------------------
 # Define desired aspect ratio of the new plot and its x range
 new.aspect <- 1/3
@@ -467,12 +467,12 @@ stabilizing.plot.zoom <- stabilizing.plot +
     scale_x_continuous(breaks=seq(0, 1, by=0.025))
 
 # Save the zoomed-in plot
-ggsave(paste0(outpath, 'S9_02_stabilizing_zoom.pdf'),
+ggsave(paste0(outpath, 'S09_stabilizing_zoom.pdf'),
     stabilizing.plot.zoom,
     device=cairo_pdf, width=main.width, height=main.width*new.aspect)
 
 
-# Bonus analysis for productivity equalization (Figure S9.4)
+# Bonus analysis for productivity equalization (Figure S11)
 # ----------------------------------------------------------
 # In the main figure, we scaled the productivity distribution around its
 # maximum (i.e. keeping the most productive species constant). This raises
@@ -521,17 +521,17 @@ prodeq.alt.sads <- plot.sads(prodeq.alt.examples.sp, color=greens[3], max.x=16)
 if (show.plots) print(prodeq.alt.sads)
 
 # Save, as above
-ggsave(paste0(outpath, 'S9_04_prodeq_alt.pdf'), 
+ggsave(paste0(outpath, 'S11_prodeq_alt.pdf'), 
     prodeq.alt.plot + th,
     device=cairo_pdf, width=main.width, height=main.height)
-ggsave(paste0(outpath, 'S9_04_prodeq_alt_sads.pdf'), 
+ggsave(paste0(outpath, 'S11_prodeq_alt_sads.pdf'), 
     prodeq.alt.sads + sad.extra + 
         scale_y_continuous(breaks=seq(0,1,by=1)) + 
         th,
     device=cairo_pdf, width=sads.width, height=sads.height)
 
 
-# Plot histograms of niche, fitness, and productivity (Figure S9.1)
+# Plot histograms of niche, fitness, and productivity (Figure S8)
 # -----------------------------------------------------------------
 # Helper functions to plot histograms
 plot.histogram <- function(v, bins=20, xlim=NULL, ylim=NULL) {
@@ -563,18 +563,18 @@ K.histogram <- plot.histogram(Ks, bins=9,
 if (show.plots) print(K.histogram)
 
 # Save as above
-ggsave(paste0(outpath, 'S9_01_a_nd_histogram.pdf'), 
+ggsave(paste0(outpath, 'S08_a_nd_histogram.pdf'), 
     nd.histogram, 
     device=cairo_pdf, width=main.width, height=main.height*7/9)
-ggsave(paste0(outpath, 'S9_01_b_fd_histogram.pdf'),
+ggsave(paste0(outpath, 'S08_b_fd_histogram.pdf'),
     fd.histogram, 
     device=cairo_pdf, width=main.width, height=main.height*7/9)
-ggsave(paste0(outpath, 'S9_01_c_K_histogram.pdf'),
+ggsave(paste0(outpath, 'S08_c_K_histogram.pdf'),
     K.histogram, 
     device=cairo_pdf, width=main.width, height=main.height*7/9)
 
 
-# Plot pairwise NFD for equalizing scenario (Figure S9.3)
+# Plot pairwise NFD for equalizing scenario (Figure S10)
 # -------------------------------------------------------
 # Calculate pairwise metrics
 pairwise <- tibble()
@@ -664,13 +664,13 @@ if (show.plots) print(pairwise.process.plot)
 # Save, making things a bit wider
 pairwise.fac <- 1.5
 pairwise.heights <- c(2/3, 1.1)
-ggsave(paste0(outpath, 'S9_03_equalizing_pairwise_process.pdf'), pairwise.process.plot, 
+ggsave(paste0(outpath, 'S10_equalizing_pairwise_process.pdf'), pairwise.process.plot, 
     device=cairo_pdf, width=main.width*pairwise.fac, height=main.height*pairwise.fac*sum(pairwise.heights))
-ggsave(paste0(outpath, 'S9_03_equalizing_pairwise_nfd.pdf'), pairwise.fct.plot, 
+ggsave(paste0(outpath, 'S10_equalizing_pairwise_nfd.pdf'), pairwise.fct.plot, 
     device=cairo_pdf, width=main.width*pairwise.fac, height=main.height*pairwise.fac*sum(pairwise.heights))
 
 
-# Pick out time series for the reference model and plot them separately
+# Pick out time series for the reference model and plot them separately (Figure S4)
 # ---------------------------------------------------------------------
 # Numbers of species to simulate
 example.ns <- c(1,2,5,20)
@@ -749,16 +749,24 @@ for (n in unique(example.ts$n.sp)) {
             data=cur.ts)
     
     # Save
-    ggsave(paste0(outpath, 'S6_01_example_timeseries_n=', n, '.pdf'), 
+    ggsave(paste0(outpath, 'S04_example_timeseries_n=', n, '.pdf'), 
         example.ts.plots[[n]],
         device=cairo_pdf, width=main.width, height=main.height*0.75)
-    ggsave(paste0(outpath, 'S6_01_example_timeseries_n=', n, '_R.pdf'), 
+    ggsave(paste0(outpath, 'S04_example_timeseries_n=', n, '_R.pdf'), 
         example.ts.R.plots[[n]],
         device=cairo_pdf, width=main.width, height=main.height*0.75)
 }
 
+# S04_example_timeseries_n=20.pdf and S04_example_timeseries_n=20_R are also Figure 5 in the main text
+# Copy them:
+file.copy(
+    paste0(outpath, 'S04_example_timeseries_n=20.pdf'), 
+    paste0(outpath, '05_example_timeseries.pdf'))
+file.copy(
+    paste0(outpath, 'S04_example_timeseries_n=20_R.pdf'), 
+    paste0(outpath, '05_example_timeseries_R.pdf'))
 
-# Analyze invasion growth rate (Figure S9.5)
+# Analyze invasion growth rate (Figure S12)
 # ------------------------------------------
 # Helper function: get the initial abundances for the invasion
 get.n0s <- function(n.sp, i, n0=1e-5, focal=0) {
@@ -846,6 +854,6 @@ FK.plot <- ggplot(full.df) +
 if (show.plots) print(FK.plot)
 
 # Save the plot
-ggsave(paste0(outpath, 'S9_05_invasion_growth.pdf'), 
+ggsave(paste0(outpath, 'S12_invasion_growth.pdf'), 
     FK.plot + th, 
     device=cairo_pdf, width=main.width, height=main.height)

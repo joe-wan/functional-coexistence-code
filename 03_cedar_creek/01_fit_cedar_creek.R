@@ -215,10 +215,10 @@ if (show.plots) print(comp.plot.compare)
 
 # Export cleaned data
 # -------------------
-saveRDS(mono.info, paste0(outpath, '05_monoculture_data.rds'))
-write.csv(mono.info, paste0(outpath, '05_monoculture_data.csv'), row.names=F)
-saveRDS(cur.clean, paste0(outpath, '05_competition_data.rds'))
-write.csv(cur.clean, paste0(outpath, '05_competition_data.csv'), row.names=F)
+saveRDS(mono.info, paste0(outpath, '08_monoculture_data.rds'))
+write.csv(mono.info, paste0(outpath, '08_monoculture_data.csv'), row.names=F)
+saveRDS(cur.clean, paste0(outpath, '08_competition_data.rds'))
+write.csv(cur.clean, paste0(outpath, '08_competition_data.csv'), row.names=F)
 
 
 # Export parameters and fits
@@ -229,12 +229,12 @@ all.params <- c(
     f11=f11, g11=g11, f22=f22, g22=g22), 
   comp.params.refined)
 print(as.data.frame(all.params))
-saveRDS(all.params, paste0(outpath, '05_raw_params.rds'))
+saveRDS(all.params, paste0(outpath, '08_raw_params.rds'))
 # Dump them as a bare-bones CSV
 as.data.frame(all.params) %>% t() %>%
   set_colnames(c('value')) %>% as.data.frame %>% 
   rownames_to_column('parameter') %>%
-  write.csv(paste0(outpath, '05_raw_params.csv'), row.names=F, quote=F)
+  write.csv(paste0(outpath, '08_raw_params.csv'), row.names=F, quote=F)
 
 # Will be useful to work directly with the more familiar parameters
 with(all.params, {
@@ -245,7 +245,7 @@ with(all.params, {
     a12=f12 + g12*soil.nitrogen, a21=f21 + g21*soil.nitrogen,
     alpha11=a11/(soil.nitrogen-Rstar1), alpha22=a22/(soil.nitrogen-Rstar2),
     alpha12=a12/(soil.nitrogen-Rstar1), alpha21=a21/(soil.nitrogen-Rstar2))
-  saveRDS(param.df, paste0(outpath, '05_param_df.rds'))
-  write.csv(param.df, paste0(outpath, '05_param_df.csv'),
+  saveRDS(param.df, paste0(outpath, '08_param_df.rds'))
+  write.csv(param.df, paste0(outpath, '08_param_df.csv'),
     row.names=F, quote=F)
 })

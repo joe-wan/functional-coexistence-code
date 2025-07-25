@@ -2,7 +2,7 @@
 # 01_fct_simulations/03_extended_fct_space.R
 # ==========================================
 # Author: Joe Wan
-# Generates FCT space figures with additional boundaries (Figures 3d, S2.1).
+# Generates FCT space figures with additional boundaries (Figure S1).
 
 # Data manipulation
 library(dplyr)
@@ -60,22 +60,6 @@ plot.roy.df <- function(df, ...) {
   return(result)
 }
 
-
-##### 2a. Make FCT conceptual figure #####
-# Get data frame with boundaries
-fct.data <- get.roy.df(
-  seq(min.nd, max.nd, by=resolution), Y1=Y1, Y2=Y2)
-
-# Generate plot
-fct.plot <- plot.roy.df(fct.data, 
-    xlab=nd.label, ylab=fr.label,
-    ylim=c(min.fr, max.fr), 
-    xlim=1-exp(-c(min.nd, max.nd))) +
-  theme_cowplot() + 
-  theme(aspect.ratio=ratio)
-if (show.plots) print(fct.plot)
-
-
 ##### 2b. Make wider FCT conceptual figure #####
 # Get data frame with boundaries
 fct.data.wide <-  get.roy.df(
@@ -112,11 +96,5 @@ if (show.plots) print(fct.approx.plot)
 
 
 ##### 4. Export plots #####
-# All the panels have the same height, so we can keep them in proportion
-# by exporting with the same dimensions
-ggsave(paste0(outpath, '03_d_fct_extended_space.pdf'), fct.plot + th, 
-       device=cairo_pdf, width=out.width*1.5, height=out.height*1.5)
-ggsave(paste0(outpath, '03_d_fct_extended_space_wide.pdf'), fct.plot.wide + th, 
-       device=cairo_pdf, width=out.width*1.5, height=out.height*1.5)
-ggsave(paste0(outpath, 'S2_01_fct_extended_space.pdf'), fct.approx.plot + th, 
+ggsave(paste0(outpath, 'S01_fct_extended_space.pdf'), fct.approx.plot + th, 
        device=cairo_pdf, width=out.width*1.5, height=out.height*1.5)

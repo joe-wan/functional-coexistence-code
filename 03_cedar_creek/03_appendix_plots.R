@@ -2,7 +2,7 @@
 # 03_cedar_creek/03_appendix_plots.R
 # ==================================
 # Author: Joe Wan
-# Generates extra appendix figures for the Cedar Creek data (Figures S7.2-3).
+# Generates extra appendix figures for the Cedar Creek data (Figures S6, S7).
 
 # Data manipulation libraries
 library(dplyr)
@@ -20,10 +20,10 @@ source('graph_params.R')
 
 
 ##### 0b. Load data #####
-param.path <- paste0(outpath, '05_param_df.rds')
-raw.param.path <- paste0(outpath, '05_raw_params.rds')
-monoculture.path <- paste0(outpath, '05_monoculture_data.rds')
-competition.path <- paste0(outpath, '05_competition_data.rds')
+param.path <- paste0(outpath, '08_param_df.rds')
+raw.param.path <- paste0(outpath, '08_raw_params.rds')
+monoculture.path <- paste0(outpath, '08_monoculture_data.rds')
+competition.path <- paste0(outpath, '08_competition_data.rds')
 
 # Check if data exists and regenerate if not
 paths <- c(param.path, raw.param.path, monoculture.path, competition.path)
@@ -39,7 +39,7 @@ raw.params <- readRDS(raw.param.path)
 monoculture <- readRDS(monoculture.path)
 competition <- readRDS(competition.path)
 
-competition.fits.wide.path <- paste0(outpath, '05_competition_fits_wide.rds')
+competition.fits.wide.path <- paste0(outpath, '08_competition_fits_wide.rds')
 if (!file.exists(competition.fits.wide.path)) {
   cat("File not found: ", competition.fits.wide.path, "\nRegenerating...\n")
   with(list(), source("02_visualize_fits.R"))
@@ -93,7 +93,7 @@ alpha.plot <- param.fits %>%
       legend.text=element_text(size=14))
 if (show.plots) print(alpha.plot)
 
-ggsave(paste0(outpath, 'S7_02_alphas.pdf'), 
+ggsave(paste0(outpath, 'S06_alphas.pdf'), 
   alpha.plot + th, 
   device=cairo_pdf, width=out.width*3/2, height=out.height)
 
@@ -148,6 +148,6 @@ ggplot(aes(x=soil.nitrogen)) +
     strip.text=element_text(size=14))
 if(show.plots) print(ap.plot)
 
-ggsave(paste0(outpath, 'S7_03_additive_partition.pdf'), 
+ggsave(paste0(outpath, 'S07_additive_partition.pdf'), 
   ap.plot + th, 
   device=cairo_pdf, width=out.width, height=out.height*2)

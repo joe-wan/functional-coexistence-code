@@ -2,7 +2,7 @@
 # 03_cedar_creek/02_visualize_fits.R
 # ==================================
 # Author: Joe Wan
-# Visualizes the fits of the Cedar Creek data (Figure 5a-c, S7.1).
+# Visualizes the fits of the Cedar Creek data (Figure 8a-c, S5).
 
 # Data manipulation libraries
 library(dplyr)
@@ -21,10 +21,10 @@ source('../01_fct_simulations/mct_helpers.R') # Only for get.equilibrium()
 
 
 ##### 0b. Load data #####
-param.path <- paste0(outpath, '05_param_df.rds')
-raw.param.path <- paste0(outpath, '05_raw_params.rds')
-monoculture.path <- paste0(outpath, '05_monoculture_data.rds')
-competition.path <- paste0(outpath, '05_competition_data.rds')
+param.path <- paste0(outpath, '08_param_df.rds')
+raw.param.path <- paste0(outpath, '08_raw_params.rds')
+monoculture.path <- paste0(outpath, '08_monoculture_data.rds')
+competition.path <- paste0(outpath, '08_competition_data.rds')
 
 # Check if data exists and regenerate if not
 paths <- c(param.path, raw.param.path, monoculture.path, competition.path)
@@ -120,8 +120,8 @@ competition.fits <- competition.fits.wide %>%
 # Save the competitive fits
 for (suff in c('', '_wide')) {
   fits <- if (suff == '_wide') competition.fits.wide else competition.fits
-  saveRDS(fits, paste0(outpath, '05_competition_fits', suff, '.rds'))
-  write.csv(fits, file=paste0(outpath, '05_competition_fits', suff, '.csv'), row.names=F)
+  saveRDS(fits, paste0(outpath, '08_competition_fits', suff, '.rds'))
+  write.csv(fits, file=paste0(outpath, '08_competition_fits', suff, '.csv'), row.names=F)
 }
 
 # Plot the competition fits
@@ -221,15 +221,15 @@ dir.create('outputs/')
 
 # Save individual panels
 th <- my.theme + bottom.legend.theme
-ggsave(paste0(outpath, 'S7_01_monoculture_fits.pdf'), 
+ggsave(paste0(outpath, 'S05_monoculture_fits.pdf'), 
   monoculture.plot + th, 
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, '05_a_competition_fits.pdf'),
+ggsave(paste0(outpath, '08_a_competition_fits.pdf'),
   competition.plot + th, 
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, '05_b_competition_delta_fits.pdf'),
+ggsave(paste0(outpath, '08_b_competition_delta_fits.pdf'),
   competition.delta.plot + th, 
   device=cairo_pdf, width=out.width, height=out.height)
-ggsave(paste0(outpath, '05_c_fct_outcomes.pdf'),
+ggsave(paste0(outpath, '08_c_fct_outcomes.pdf'),
   fct.plot + th, 
   device=cairo_pdf, width=out.width, height=out.height)
