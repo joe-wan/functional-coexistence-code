@@ -28,3 +28,5 @@ function run_script {
 # Run scripts using our function
 # ==============================
 run_script 01_multispecies.R
+run_script 02_supplemental_analyses.R
+run_script 03_misc_analyses.R

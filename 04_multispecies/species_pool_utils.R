@@ -3,18 +3,14 @@
 # ====================================
 # Author: Joe Wan
 # Helper functions for working with the multispecies model.
-
-# Data manipulation libraries
+library(deSolve)
 library(tidyr)
 library(dplyr)
 library(stringr)
 library(tibble)
 
-# deSolve for ODE simulation
-library(deSolve)
-
-
 ##### 0. General helpers for calculations #####
+
 # "Clip" abundances to zero
 clip <- function(N) pmax(N, 0)
 
@@ -49,6 +45,7 @@ factor.preserve.order <- function(x) factor(x, levels=unique(x))
 
 
 ##### 1. Defining the ODE model and its traits #####
+
 # Function implementing the derivatives for deSolve, ported from the Julia model:
 # # dn[:] = n .* ((R_0 - dot(c, n))*r ./ (B*n .+ 1) .- mu)
 resource.model <- function(t, N, params) {
@@ -156,6 +153,7 @@ subset.system <- function(system, species) {
 }
 
 ##### 2a. Functions to get pairwise MCT metrics #####
+
 summarize.traits <- function(params) {
     # Vector of Rstars: straightforwardly apply the formula
     #   Rstar = mu / (eff * up)
@@ -266,6 +264,7 @@ get.nfds <- function(summary) {
 
 
 ##### 2b. Functions to back-calculate parameters from MCT metrics #####
+
 backcalculate.alphas <- function(rhos, frs, Ks) {
     self.alphas <- Ks^-1
     # Implement the formula
@@ -294,6 +293,7 @@ get.B <- function(alphas, R0, mus, ups, effs) {
 
 
 ##### 3. Functions for automatically detecting model equilbria #####
+
 get.n.sp <- function(params) {
     # Find the first vector in params
     v <- NULL
@@ -309,6 +309,8 @@ get.n.sp <- function(params) {
     return(length(v))
 }
 
+# Ported from the Julia code
+
 detect.zero.growth <- function(final.n, growth.function, params, threshold=1e-7)
     abs(growth.function(final.n, params)) < abs(threshold)
 detect.is.present <- function(final.n, threshold=1e-7) final.n > abs(threshold)
@@ -323,6 +325,7 @@ at.equilibrium <- function(final.n, params, growth.function, growth.threshold=1e
     return(all(!is.present | zero.growth))
 }
 
+# Ported from the Julia code, with some modifications: DESolve returns 
 get.equilibrium <- function(fn, params, growth.function, ..., time=1e6, n0=1e-5, maxtime=1e12, refine=F, verbose=F) {
     n.sp <- get.n.sp(params)
     if (length(n0) > 1) n0s <- n0 
@@ -357,6 +360,7 @@ get.equilibrium <- function(fn, params, growth.function, ..., time=1e6, n0=1e-5,
 
 
 ##### 3b. Functions for organizing results #####
+
 # Make data frame from deSolve output
 format.df <- function(out) { 
     return(data.frame(out) %>%
