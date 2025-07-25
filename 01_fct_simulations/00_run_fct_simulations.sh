@@ -31,3 +31,4 @@ run_script 02_fct_processes.R
 run_script 03_extended_fct_space.R
 run_script 04_additive_partition.R
 run_script 05_multifunctionality.R
+run_script 06_heatmap.R

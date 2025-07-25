@@ -25,11 +25,11 @@ biomass.label <- expression(paste('total biomass, ', Sigma * N))
 # total biomass, ΣN
 fr.label <- expression(paste('fitness ratio, ', f[1]/f[2]))
 # 'fitness ratio, f₁/f₂'
-nd.label <- expression(paste('niche difference, ', 1 - rho))
-# 'niche difference, 1 − ρ'
+nd.label <- expression(paste('niche difference, ', - log * ' ' * rho))
+# 'niche difference, −log ρ'
 yield.label <- expression(paste('intrinsic yield, ', K[2]))
 fr.prefix <- 'f[1]/f[2] ==' # 'f₁/f₂ ='
-nd.prefix <- '1-rho ==' # '1−ρ ='
+nd.prefix <- '-log * rho ==' # '−log(ρ) ='
 yr.prefix <- 'K[1]/K[2] ==' # 'K₁/K₂ ='
 
 # Colors
@@ -37,6 +37,7 @@ yr.prefix <- 'K[1]/K[2] ==' # 'K₁/K₂ ='
 oranges <- c('#ffc27d', '#ffa154', '#f37329', '#cc3b02', '#a62100')
 greens <- c('#d1ff82', '#9bdb4d', '#68b723', '#3a9104', '#206b00')
 blues <- c('#8cd5ff', '#64baff', '#3689e6', '#0d52bf', '#002e99')
+reds <- c('#ff8c82', '#ed5353', '#c6262e', '#a10705', '#7a0000')
 coex.col <- 'gray65'
 ass.col <- 'gray90'
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 # 01_fct_simulations/process_helpers.R
 # ====================================
 # Author: Joe Wan

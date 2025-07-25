@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 # 01_fct_simulations/mct_params.R
 # ===============================
 # Author: Joe Wan
