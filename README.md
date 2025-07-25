@@ -21,19 +21,19 @@ to be run within its own working directory.
 The contents of this repository are:
 - `00_run_all.sh` runs analyses 1–5 in their respective working directories.
 - `01_fct_simulations/` performs simulations for the general (i.e. 
-   Lotka–Volterra) results, producing main text Figures 1–3, 6 and Supplemental 
-   Figure S2.1.
+   Lotka–Volterra) results, producing main text Figures 1-4, 9, and Supplemental 
+   Figure S1.
 - `02_resource_model/` handles the theoretical simulations of the resource 
-   competition model for two species, producing main text Figure 4b.
+   competition model for two species, producing main text Figure 7.
 - `03_cedar_creek/` contains digitized results and analyses for Wedin and Tilman
    (1993)'s experiment at Cedar Creek using our resource competition model, 
-   producing main text Figure 5 as well as Supplemental Figures S7.1–3.
+   producing main text Figure 8 as well as Supplemental Figures S5-S7.
 - `04_multispecies/` simulates the resource competition from above for more than
-   two species, producing main text Figure 7 and Supplemental Figures S6.1, 
-   S9.1–5.
+   two species, producing main text Figure 6 and Supplemental Figures S4, 
+   S8-12.
 - `05_tigr_complementarity/` compares geometric, arithmetic, and 
    complementarity-based metrics for niche and fitness difference, and produces 
-   Supplemental Figure S5.1.
+   Supplemental Figure S3.
 
 
 ## Software
